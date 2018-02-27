@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Quartz";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>General</h2>
+
+<div id="schedulerContainer">
+
+        <ul class="am-icon-ul">
+            <li class="am-lg am-ext-li-mg">
+                <button type="button" class="am-btn am-btn-default am-ext-btn-md">Instance ID:</button>
+                <button type="button" class="am-btn am-btn-default am-ext-btn-lg">{{sched.InstanceId}}</button>
+                <button type="button" class="am-btn am-btn-default am-ext-btn-md">Stand By</button>
+            </li>
+            <li class="am-ext-wd-mid am-ext-li-mg">
+                <button type="button" class="am-btn am-btn-default am-ext-btn-md" id="">Scheduler Name:</button>
+                <button type="button" class="am-btn am-btn-default am-ext-btn-lg" id="">{{sched.Name}}</button>
+                <button type="button" class="am-btn am-btn-default am-ext-btn-md">Pause</button>
+            </li>
+            <li class="am-ext-wd-mid am-ext-li-mg">
+                <button type="button" class="am-btn am-btn-default am-ext-btn-md" id="">State:</button>
+                <button type="button" class="am-btn am-btn-default am-ext-btn-lg" id="">{{sched.State}}</button>
+                <button type="button" class="am-btn am-btn-default am-ext-btn-md">Refresh</button>
+            </li>
+        </ul>
+        <hr />
+
+        <div class="am-panel am-panel-default" v-for="group in sched.Groups">
+            <div class="am-panel-hd">{{group.Name}}</div>
+            <div class="am-panel-bd">
+
+                <div class="am-panel am-panel-default" v-for="job in group.Jobs">
+                    <div class="am-panel-hd">{{job.Name}}</div>
+                    <div class="am-panel-bd">
+
+                        <table class="am-table am-table-bordered am-table-radius am-table-striped">
+                            <thead>
+                                <tr>
+                                    <th>触发器名称</th>
+                                    <th>状态</th>
+                                    <th>开始时间</th>
+                                    <th>终止时间</th>
+                                    <th>上次运行</th>
+                                    <th>下次运行</th>
+                                </tr>
+                            <tbody>
+                                <tr v-for="trigger in job.Triggers">
+                                    <td>{{trigger.Name}}</td>
+                                    <td>{{trigger.State}}</td>
+                                    <td>{{trigger.StartTime}}</td>
+                                    <td>{{trigger.EndTime}}</td>
+                                    <td>{{trigger.PreviousFireTime}}</td>
+                                    <td>{{trigger.NextFireTime}}</td>
+                                </tr>
+                            </tbody>
+                            </thead>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+</div>
+
+<script src="assets/js/quartz.js"></script>
+
+
+

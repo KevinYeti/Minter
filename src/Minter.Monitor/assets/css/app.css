@@ -1,0 +1,24 @@
+/* Write your styles */
+.am-ext-bc-grey {
+    border: 1px solid #333333;
+}
+
+.am-ext-wd-mid {
+    width: 700px;
+}
+
+.am-ext-btn-sm {
+    width: 100px;
+}
+
+.am-ext-btn-md{
+    width:150px;
+}
+
+.am-ext-btn-lg {
+    width: 300px;
+}
+
+.am-ext-li-mg {
+    margin: 1rem;
+}
